@@ -9,7 +9,7 @@ $(document).ready(function(){
     });
 
 
-    $("#waldo-image").hover(function(){
+    $(".waldo-image").hover(function(){
       $('.tag').show();
     },
 
