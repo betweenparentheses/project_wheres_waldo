@@ -87,16 +87,18 @@ WW.Targeting = (function(){
 
 
 
+
+
 WW.Tagging = (function(){
 
 
-  var tags = [];
+  var tags = {};
   var _tagHeight = 100;
   var _tagWidth = 100;
 
   function addTag(character, position){
     var newTag = new Tag(character, position);
-    tags.push(newTag);
+    tags[character] = newTag;
     return newTag;
   }
 
@@ -106,9 +108,12 @@ WW.Tagging = (function(){
   }
 
   function showTag(tag){
-    //create an absolutely positioned div around relativeX, relativeY
     $('.target-box').remove();
-    var $tag = $('<div class = "tag"></div>');
+
+    // remove any previous divs that showed this tag elsewhere
+    $('#'+tag.character).remove();
+
+    var $tag = $('<div class = "tag" id = '+ tag.character +'></div>');
 
     $tag.css({
       height: _tagHeight + "px",
