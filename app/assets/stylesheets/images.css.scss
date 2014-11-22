@@ -1,0 +1,16 @@
+// Place all the styles related to the images controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.playing-field-wrapper {
+  position: relative;
+}
+
+.waldo-image {
+  position: relative;
+}
+
+.target-box {
+  border: 3px solid black;
+  position: absolute;
+}
