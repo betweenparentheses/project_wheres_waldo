@@ -13,6 +13,24 @@
 .target-box {
   border: 3px solid black;
   position: absolute;
+  padding: 10px;
+
+  form {
+    height: 100%;
+    position: relative;
+  }
+
+  .tag-submit {
+    padding: 5px;
+    width: 100%;
+    font-size: 16px;
+    background-color: white;
+    opacity: 0.67;
+    border: 1px solid black;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
 }
 
 .tag {

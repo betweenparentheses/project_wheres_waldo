@@ -3,6 +3,6 @@
     <%= f.collection_select :character_id, Character.all, :id, :name, {:prompt => "Whom did you find?!!!"} %>
     <%= f.hidden_field :position_x, :value => position_x %>
     <%= f.hidden_field :position_y, :value => position_y %>
-    <%= f.submit "Tag me!" %>
+    <%= f.submit "Tag me!", class: "tag-submit" %>
   <% end %>
 </div>
