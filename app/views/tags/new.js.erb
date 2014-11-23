@@ -1,0 +1,16 @@
+
+$('.target-box').remove();
+
+$(".playing-field-wrapper").append("<%= escape_javascript(render :partial => 'tag_form', :locals => { :tag => @tag, :position_x => @position_x, :position_y => @position_y } ) %>");
+
+var boxHeight = 100;
+var boxWidth = 200;
+
+$('.target-box').css({
+  height: boxHeight + "px",
+  width: boxWidth + "px",
+  top: (<%= @position_y %> - boxHeight / 2 ) + "px",
+  left: (<%= @position_x %> - boxWidth / 2 ) + "px"
+});
+
+

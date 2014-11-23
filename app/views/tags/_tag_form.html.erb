@@ -1,0 +1,8 @@
+<div class = "target-box">
+  <%=form_for tag, remote: true do |f| %>
+    <%= f.collection_select :character_id, Character.all, :id, :name, {:prompt => "Whom did you find?!!!"} %>
+    <%= f.hidden_field :position_x, :value => position_x %>
+    <%= f.hidden_field :position_y, :value => position_y %>
+    <%= f.submit "Tag me!" %>
+  <% end %>
+</div>

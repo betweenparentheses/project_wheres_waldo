@@ -16,11 +16,11 @@ $(document).ready(function(){
       $('.tag').hide();
     });
 
-    $('#images-show').on('click', 'input', function(e){
-      e.preventDefault();
-      var newTag = WW.Tagging.addTag($(e.target).prev().val(), WW.Targeting.currentPosition());
-      WW.Tagging.showTag(newTag);
-    });
+    // $('#images-show').on('click', 'input', function(e){
+    //   e.preventDefault();
+    //   var newTag = WW.Tagging.addTag($(e.target).prev().val(), WW.Targeting.currentPosition());
+    //   WW.Tagging.showTag(newTag);
+    // });
   }
 });
 
@@ -51,21 +51,14 @@ WW.Targeting = (function(){
       return;
     }
 
-    //create an absolutely positioned div around relativeX, relativeY
-    $('.target-box').remove();
-    var $box = $('<div class = "target-box"></div>');
-
-    $box.css({
-      height: _boxHeight + "px",
-      width: _boxWidth + "px",
-      top: (position.y - _boxHeight / 2 ) + "px",
-      left: (position.x - _boxWidth / 2 ) + "px"
+    $.ajax({
+      url: '/tags/new',
+      data: { position_x: position.x,
+              position_y: position.y },
+      async: true,
+      dataType: 'script'
     });
-    $(context).append($box);
 
-    //that div has a dropdown: populate that dropdown with selection options for characters
-    $box.append('<select name = "characters"><option value = "Waldo">Waldo</option></select>');
-    $box.append('<input value="Tag me!" type="submit"></input>');
   }
 
   return { targetBox: targetBox,

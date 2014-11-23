@@ -1,51 +1,45 @@
 class TagsController < ApplicationController
-  respond_to :html, :js
 
   def index
     @tags = Tag.all
   end
 
-  # def create
-  #   @tag = Tag.new
-  #   if @tag.save(tag_params)
+  def new
+    @tag = Tag.new
+    @position_x = params[:position_x]
+    @position_y = params[:position_y]
 
-  #   end
-  # end
+    respond_to do |format|
+      format.html { redirect_to @tag, notice: 'Tag was successfully created.' }
+       format.js { render :new, status: 200, location: @tag }
+    end
+  end
 
   def create
-  @task = Task.new(task_params)
+    @tag = Tag.new(tag_params)
 
-  respond_to do |format|
-  if @task.save
+    respond_to do |format|
+      if @tag.save
+        format.html { redirect_to @tag, notice: 'Tag was successfully created.' }
+        format.js { render :show, status: :created, location: @tag }
+      else
+        format.html { render :new }
+        format.js { render json: @tag.errors, status: :unprocessable_entity }
+      end
+    end
 
-  # Standard HTML rendering options
-  format.html { redirect_to @task, notice: 'Task was successfully created.' }
-
-  # Render the `:show` template with a 
-  # "201: created" status and inform the 
-  # browser that it's located at the @show path
-  # This is NOT a redirection... it just tells
-  # the browser where this new resource is located.
-  # Consider it best practice with little
-  # practical value.
-  # The payload is still the `:show` template.
-  format.json { render :show, status: :created, location: @task }
-  else
-
-  # Standard stuff
-  format.html { render :new }
-
-  # Render a specific JSON payload which is 
-  # the errors object from our failed Task
-  format.json { render json: @task.errors, status: :unprocessable_entity }
-  end
-  end
   end
 
   def update
   end
 
   def destroy
+  end
+
+  private
+
+  def tag_params
+    params.require(:tag).permit(:character_id, :position_x, :position_y)
   end
 
 end

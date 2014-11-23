@@ -1,0 +1,16 @@
+    
+
+    $('#'+tag.character).remove();
+
+    //selecting a character creates a Tag associated with that character at that location
+    var $tag = $('<div class = "tag" id = '+ tag.character +'></div>');
+
+    $tag.css({
+      height: _tagHeight + "px",
+      width: _tagWidth + "px",
+      top: (tag.position.y - _tagHeight / 2 ) + "px",
+      left: (tag.position.x - _tagWidth / 2 ) + "px"
+    });
+    $('#images-show').append($tag);
+
+    $tag.append('<p>' + tag.character + '</p>');
