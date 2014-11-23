@@ -8,7 +8,6 @@ $(document).ready(function(){
 
     });
 
-
     $(".waldo-image").hover(function(){
       $('.tag').show();
     },
@@ -22,7 +21,6 @@ $(document).ready(function(){
       var newTag = WW.Tagging.addTag($(e.target).prev().val(), WW.Targeting.currentPosition());
       WW.Tagging.showTag(newTag);
     });
-
   }
 });
 
@@ -53,7 +51,6 @@ WW.Targeting = (function(){
       return;
     }
 
-
     //create an absolutely positioned div around relativeX, relativeY
     $('.target-box').remove();
     var $box = $('<div class = "target-box"></div>');
@@ -66,19 +63,10 @@ WW.Targeting = (function(){
     });
     $(context).append($box);
 
-
     //that div has a dropdown: populate that dropdown with selection options for characters
     $box.append('<select name = "characters"><option value = "Waldo">Waldo</option></select>');
     $box.append('<input value="Tag me!" type="submit"></input>');
-
-    //selecting a character creates a Tag associated with that character at that location
-
-    // alert('X: ' + position.x + ', ' + 'Y: ' + position.y);
-
-
   }
-
-
 
   return { targetBox: targetBox,
             currentPosition: currentPosition };
@@ -86,11 +74,7 @@ WW.Targeting = (function(){
 })();
 
 
-
-
-
 WW.Tagging = (function(){
-
 
   var tags = {};
   var _tagHeight = 100;
@@ -113,6 +97,7 @@ WW.Tagging = (function(){
     // remove any previous divs that showed this tag elsewhere
     $('#'+tag.character).remove();
 
+    //selecting a character creates a Tag associated with that character at that location
     var $tag = $('<div class = "tag" id = '+ tag.character +'></div>');
 
     $tag.css({
@@ -124,8 +109,6 @@ WW.Tagging = (function(){
     $('#images-show').append($tag);
 
     $tag.append('<p>' + tag.character + '</p>');
-
-
   }
 
   return { Tag: Tag,
@@ -134,4 +117,3 @@ WW.Tagging = (function(){
           showTag: showTag };
 
 }());
-
