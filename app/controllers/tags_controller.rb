@@ -2,6 +2,10 @@ class TagsController < ApplicationController
 
   def index
     @tags = Tag.all
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new
@@ -34,6 +38,13 @@ class TagsController < ApplicationController
   end
 
   def destroy
+    @tag = Tag.find(params[:id])
+    @name = @tag.character.name
+    @tag.destroy
+    respond_to do |format|
+      format.html
+      format.js { render :destroy, status: 200 }
+    end
   end
 
   private

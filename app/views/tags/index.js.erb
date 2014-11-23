@@ -1,0 +1,16 @@
+$('.tag').remove();
+$('.target-box').remove();
+
+$(".playing-field-wrapper").append("<%= escape_javascript(render @tags ) %>");
+
+var tagHeight = 100;
+var tagWidth = 100;
+
+<% @tags.each do |tag| %>
+  $('#<%= tag.character.name %>').css({
+    height: tagHeight + "px",
+    width: tagWidth + "px",
+    top: (<%= tag.position_y %> - tagHeight / 2 ) + "px",
+    left: (<%= tag.position_x %> - tagWidth / 2 ) + "px"
+  });
+<% end %>

@@ -1,16 +1,13 @@
+$('#<%= @tag.character.name %>').remove();
+$('.target-box').remove();
 
-$('#<%=@tag.character.name %>').remove();
-
-
-$(".waldo-image").append("<%= escape_javascript(render :partial => 'tag', :locals => { :tag => @tag } ) %>")
-
-
+$(".playing-field-wrapper").append("<%= escape_javascript(render :partial => 'tag', :locals => { :tag => @tag } ) %>");
 
 var tagHeight = 100;
 var tagWidth = 100;
-$('#<%=@tag.character.name %>').css({
+$('#<%= @tag.character.name %>').css({
   height: tagHeight + "px",
   width: tagWidth + "px",
-  top: (@tag.position_y - tagHeight / 2 ) + "px",
-  left: (@tag.position_x - tagWidth / 2 ) + "px"
+  top: (<%= @tag.position_y %> - tagHeight / 2 ) + "px",
+  left: (<%= @tag.position_x %> - tagWidth / 2 ) + "px"
 });

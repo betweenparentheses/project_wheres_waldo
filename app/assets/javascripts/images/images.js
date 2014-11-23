@@ -8,12 +8,18 @@ $(document).ready(function(){
 
     });
 
-    $(".waldo-image").hover(function(){
+    $(".playing-field-wrapper").hover(function(){
       $('.tag').show();
     },
 
     function(){
       $('.tag').hide();
+    });
+
+    $.ajax({
+      url: '/tags',
+      async: true,
+      dataType: 'script'
     });
 
     // $('#images-show').on('click', 'input', function(e){
@@ -47,7 +53,7 @@ WW.Targeting = (function(){
     position = _getCoords(context, event);
 
     // don't redraw box if interacting with its children
-    if ($(event.target).parents().hasClass('target-box')){
+    if ($(event.target).parents().hasClass('target-box') || $(event.target).parents().hasClass('tag')){
       return;
     }
 

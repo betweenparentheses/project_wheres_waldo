@@ -1,3 +1,4 @@
 <div class = "tag" id = "<%= tag.character.name %>" >
   <p><%= tag.character.name %></p>
+  <%= button_to "X", { controller: "tags", action: "destroy", id: tag.id }, method: :delete, remote: true %>
 </div>
