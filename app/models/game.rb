@@ -13,6 +13,18 @@ class Game < ActiveRecord::Base
     self.save
   end
 
+  #query of characters not yet tagged in this game
+  def remaining_characters
+    characters = self.characters_selected
+    characters = ["SQL breaks if this is null"] if characters.empty?
+
+    Character.where("name NOT IN (?)", characters )
+  end
+
+  def characters_selected
+    self.characters_tagged.pluck(:name)
+  end
+
   def is_high_score?
     Game.high_scores.pluck(:score).include?(self.score)
   end
@@ -21,6 +33,7 @@ class Game < ActiveRecord::Base
     Game.order(score: :desc).limit(10).select(:player_name, :score)
   end
 
-
+  
+  
 
 end
