@@ -1,0 +1,4 @@
+$('#winner-box').empty();
+
+
+$("#winner-box").append("<%= escape_javascript(render :partial => 'high_scores', :locals => { :high_scores => @high_scores} ) %>");

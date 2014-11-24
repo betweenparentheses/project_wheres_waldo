@@ -1,7 +1,16 @@
 <div id = "winner-box">
   <h2>YOU WON!!!!</h2>
-  <p>It took you <%= game.victory_time %> to complete the game.</p>
+  <p>Your score was  <%= game.score %>.</p>
 
+  <% if game.is_high_score? %>
+
+    <%= form_for @game, remote: true do |f| %>
+      <%= f.label :player_name, "Submit your name for the history books!" %>
+      <%= f.text_field :player_name %>
+      <%= f.submit "Congratulations!" %>
+    <% end %>
+
+  <% end %>
 
 
 </div>

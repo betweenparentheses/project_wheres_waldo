@@ -1,0 +1,15 @@
+<h2>HIGH SCORES!!! </h2>
+
+<table>
+  <thead>
+    <th>Player</th>
+    <th>Score</th>
+  </thead>
+
+  <% high_scores.each do |high| %>
+    <tr>
+      <td><%= high.player_name %></td>
+      <td><%= high.score %></td>
+    </tr>
+  <% end %>
+</table>
