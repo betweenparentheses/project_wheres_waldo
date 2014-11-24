@@ -1,7 +1,8 @@
 class TagsController < ApplicationController
 
   def index
-    @tags = Tag.all
+    @game = Game.find(params[:game_id])
+    @tags = @game.tags.all
     respond_to do |format|
       format.html
       format.js
@@ -9,23 +10,28 @@ class TagsController < ApplicationController
   end
 
   def new
-    @tag = Tag.new
+    @game = Game.find(params[:game_id])
+    @tag = @game.tags.build
     @position_x = params[:position_x]
     @position_y = params[:position_y]
 
     respond_to do |format|
-      format.html { redirect_to @tag, notice: 'Tag was successfully created.' }
-       format.js { render :new, status: 200, location: @tag }
+       format.js { render :new, status: 200, location: [@game, @tag] }
     end
   end
 
   def create
-    @tag = Tag.new(tag_params)
+    @game = Game.find(params[:game_id])
+    @tag = @game.tags.build(tag_params)
 
     respond_to do |format|
       if @tag.save
-        format.html { redirect_to @tag, notice: 'Tag was successfully created.' }
-        format.js { render :show, status: :created, location: @tag }
+        if @game.tags.length == Character.count
+          format.js { redirect_to edit_game_url(@game) }
+        else
+          format.html { redirect_to [@game, @tag], notice: 'Tag was successfully created.' }
+          format.js { render :show, status: :created, location: [@game, @tag] }
+        end
       else
         format.html { render :new }
         format.js { render json: @tag.errors, status: :unprocessable_entity }

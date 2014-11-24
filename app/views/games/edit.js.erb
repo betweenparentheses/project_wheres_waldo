@@ -1,0 +1,2 @@
+$('.target-box').remove();
+$(".playing-field-wrapper").append("<%= escape_javascript(render :partial => 'victory', :locals => { :game => @game } ) %>")
