@@ -30,7 +30,8 @@ class Game < ActiveRecord::Base
   end
 
   def self.high_scores
-    Game.order(score: :desc).limit(10).select(:player_name, :score)
+    Game.where.not(score: nil).order(score: :desc).
+                     limit(10).select(:player_name, :score)
   end
 
   
