@@ -7,8 +7,18 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-Character.create(name: 'Waldo')
-Character.create(name: 'Wenda')
-Character.create(name: 'Wizard')
-Character.create(name: 'Odlaw')
-Character.create(name: 'Woof')
+Character.create(name: 'Waldo', 
+                 position_x: 1594,
+                 position_y: 620)
+Character.create(name: 'Wenda', 
+                 position_x: 1093,
+                 position_y: 581)
+Character.create(name: 'Wizard', 
+                 position_x: 2378,
+                 position_y: 1494)
+Character.create(name: 'Odlaw', 
+                 position_x: 1125,
+                 position_y: 1058)
+Character.create(name: 'Woof', 
+                 position_x: 1913,
+                 position_y: 1088)

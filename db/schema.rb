@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141123223125) do
+ActiveRecord::Schema.define(version: 20141125032653) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 20141123223125) do
     t.string   "name",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "position_x"
+    t.integer  "position_y"
   end
 
   add_index "characters", ["name"], name: "index_characters_on_name", unique: true, using: :btree
