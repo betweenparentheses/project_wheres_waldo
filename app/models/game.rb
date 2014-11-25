@@ -9,8 +9,10 @@ class Game < ActiveRecord::Base
     case total_inaccuracy
     when 0..50 then 250
     when 51..100 then 100
-    when 100..200 then 0
-    when 200..400 then -200
+    when 101..200 then 0
+    when 201..400 then -100
+    when 400..600 then -250
+    when 601..1000 then -1000
     else -1800 # to deter random clicking
     end
   end
